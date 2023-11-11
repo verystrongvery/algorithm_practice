@@ -14,16 +14,16 @@
 
 ### Top Down 방식 문제 설계
 1. N이 5000 이라 가정
-2. 크기가 5001인 answer 배열을 만들고, answer[3] = 1, answer[5] = 1 저장
-3. answer[i] = min(answer[i-3], answer[i-5]) + 1 점화식 이용하여 재귀함수 호출
-4. answer[5000] = min(answer[4997], answer[4995]) + 1
+2. 크기가 5001인 momoization 배열을 만들고, momoization[3] = 1, momoization[5] = 1 저장
+3. momoization[i] = min(momoization[i-3], momoization[i-5]) + 1 점화식 이용하여 재귀함수 호출
+4. momoization[5000] = min(momoization[4997], momoization[4995]) + 1
 5. 4번의 결과를 재귀 호출로 반복하여 최종해 구하기
-6. 시간복잡도는 O(N), 입력값은 최대 5000 이므로, 5000 << 100,000,000 이므로 1초 안에 해결 가능
+6. 시간복잡도는 O(N), 입력값은 최대 5000 이므로, 5000 < 100000000 이므로 1초 안에 해결 가능
 
 ### Bottom Up 방식 문제 설계
 1. N이 5000 이라 가정
-2. 크기가 5001인 answer 배열을 만들고, answer[3] = 1, answer[5] = 1 저장 
-3. answer[i] = min(answer[i-3], answer[i-5]) + 1 점화식 이용하여 반복문 호출
-4. answer[6] = min(answer[3], answer[1]) + 1
+2. 크기가 5001인 momoization 배열을 만들고, momoization[3] = 1, momoization[5] = 1 저장 
+3. momoization[i] = min(momoization[i-3], momoization[i-5]) + 1 점화식 이용하여 반복문 호출
+4. momoization[6] = min(momoization[3], momoization[1]) + 1
 5. 4번의 결과를 반복문으로 반복하여 최종해 구하기
-6. 시간복잡도는 O(N), 입력값은 최대 5000 이므로, 5000 << 100,000,000 이므로 1초 안에 해결 가능
+6. 시간복잡도는 O(N), 입력값은 최대 5000 이므로, 5000 < 100000000 이므로 1초 안에 해결 가능
