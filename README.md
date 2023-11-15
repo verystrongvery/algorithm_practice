@@ -1,4 +1,4 @@
-알고리즘 개념 공부
+### 알고리즘 개념 공부
 - Dynamic Programming
   - [x] Edit Distance
   - [x] Knapsack
