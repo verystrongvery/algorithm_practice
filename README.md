@@ -11,6 +11,6 @@
     - [x] Breadth First Search
     - [x] Depth First Search
   - Shortest Path Problem
-    - [ ] Bellman Ford
+    - [x] Bellman Ford
     - [x] Dijkstra
     - [ ] Floyd Warshall
