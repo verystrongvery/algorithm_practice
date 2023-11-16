@@ -10,7 +10,11 @@
   - Graph Search
     - [x] Breadth First Search
     - [x] Depth First Search
+  - Minimum Spanning Tree
+    - [ ] Kruskal
+    - [x] Union Find
+    - [ ] Prim
   - Shortest Path Problem
     - [x] Bellman Ford
     - [x] Dijkstra
-    - [ ] Floyd Warshall
+    - [x] Floyd Warshall
