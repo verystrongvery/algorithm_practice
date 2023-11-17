@@ -17,3 +17,4 @@
     - [x] Bellman Ford
     - [x] Dijkstra
     - [x] Floyd Warshall
+  - [x] Topology Sort
