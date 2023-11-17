@@ -11,9 +11,8 @@
     - [x] Breadth First Search
     - [x] Depth First Search
   - Minimum Spanning Tree
-    - [ ] Kruskal
+    - [x] Kruskal
     - [x] Union Find
-    - [ ] Prim
   - Shortest Path Problem
     - [x] Bellman Ford
     - [x] Dijkstra
