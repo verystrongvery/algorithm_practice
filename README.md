@@ -18,3 +18,10 @@
     - [x] Dijkstra
     - [x] Floyd Warshall
   - [x] Topology Sort
+- Sorting
+  - [x] Bubble Sort
+  - [x] Heap Sort
+  - [x] Insert Sort
+  - [x] Merge Sort
+  - [x] Quick Sort
+  - [x] Selection Sort
