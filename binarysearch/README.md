@@ -19,3 +19,7 @@
 
 ### Binary Search 시간복잡도
 - O(logN)
+
+### 꿀팁
+- 제대로 탐색이 되는지 로그 찍어보기
+- lower bound 이진탐색을 할지, upper bound 이진탐색을 할지 고려하기
