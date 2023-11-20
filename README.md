@@ -12,7 +12,7 @@
   - [x] Matrix Chain Multiplication
 - Graph
   - Graph Search
-    - [ ] Backtracking
+    - [x] Backtracking
     - [x] Breadth First Search
     - [x] Depth First Search
   - Minimum Spanning Tree
