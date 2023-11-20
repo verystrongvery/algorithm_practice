@@ -1,8 +1,7 @@
 ### 알고리즘 개념 공부
 - [x] Binary Search
-- [ ] Bitmask
+- [x] Bitmask
 - [ ] Brute Force
-- [ ] Divide And Conquer
 - Dynamic Programming
   - [x] basic
   - [x] Edit Distance
