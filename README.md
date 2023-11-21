@@ -26,7 +26,7 @@
 - [ ] Greedy
 - Math
   - [x] Euclidean Algorithm
-  - [ ] Sieve Of Eratosthenes
+  - [x] Sieve Of Eratosthenes
 - Sorting
   - [x] Bubble Sort
   - [x] Heap Sort
