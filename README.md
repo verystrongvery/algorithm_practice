@@ -23,7 +23,7 @@
     - [x] Dijkstra
     - [x] Floyd Warshall
   - [x] Topology Sort
-- [ ] Greedy
+- [x] Greedy
 - Math
   - [x] Euclidean Algorithm
   - [x] Sieve Of Eratosthenes
