@@ -1,7 +1,7 @@
 ### 알고리즘 개념 공부
 - [x] Binary Search
 - [x] Bitmask
-- [ ] Brute Force
+- [x] Brute Force
 - Dynamic Programming
   - [x] basic
   - [x] Edit Distance
@@ -34,8 +34,4 @@
   - [x] Merge Sort
   - [x] Quick Sort
   - [x] Selection Sort
-- Sub Array
-  - [ ] Prefix Sum
-  - [ ] Sliding Window
-  - [ ] Two Pointer
 - [x] Time Complexity
