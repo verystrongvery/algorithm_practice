@@ -25,9 +25,7 @@
   - [x] Topology Sort
 - [ ] Greedy
 - Math
-  - [ ] Combination
-  - [ ] Euclidean Algorithm
-  - [ ] Permutation
+  - [x] Euclidean Algorithm
   - [ ] Sieve Of Eratosthenes
 - Sorting
   - [x] Bubble Sort
