@@ -2,6 +2,8 @@
 - [x] Binary Search
 - [x] Bitmask
 - [x] Brute Force
+- Data Structure
+  - [x] Stack
 - Dynamic Programming
   - [x] basic
   - [x] Edit Distance
@@ -34,4 +36,5 @@
   - [x] Merge Sort
   - [x] Quick Sort
   - [x] Selection Sort
+- [x] String
 - [x] Time Complexity
