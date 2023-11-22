@@ -4,6 +4,7 @@
 - [x] Brute Force
 - Data Structure
   - [x] Stack
+  - [x] Set
 - Dynamic Programming
   - [x] basic
   - [x] Edit Distance
