@@ -1,5 +1,6 @@
 ### Map
 - 키와 값을 하나의 쌍으로 저장하는 자료구조
+- TreeMap: key 값을 기준으로 정렬
 
 ### Map 관련 메소드
 - getOrDefault(key, defaultValue): 조회하려는 키가 존재한다면, 조회하려는 키의 값을 반환하고, 없다면 기본 값을 반환
