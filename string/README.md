@@ -10,6 +10,7 @@
 - String.split(s): 문자열 s를 기준으로 문자열을 나누어 배열에 저장하여 반환
 - String.replaceAll(정규표현식, s): 정규표현식에 해당하는 부분을 s로 변경
 - String.matches(정규표현식): 문자열이 정규표현식에 일치하면 true 반환
+- String.indexOf(s): 조회하려는 문자열이 처음 발견되는 위치 반환
 
 ### 정규표현식
 - [abc] : a, b, c 중 한 문자
