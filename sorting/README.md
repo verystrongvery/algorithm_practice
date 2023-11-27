@@ -1,6 +1,7 @@
 ### Stable Sort
 - 중복된 값을 입력 순서와 동일하게 정렬하는 정렬 알고리즘
 - 예시: 버블정렬, 삽입정렬, 병합정렬
+- Collection.sort(), Stream.sorted()는 Stable Sort
 
 ### Unstable Sort
 - 중복된 값이 입력순서와 동일하지 않게 정렬되는 알고리즘
