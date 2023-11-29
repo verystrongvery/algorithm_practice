@@ -8,6 +8,7 @@
 - String.replaceAll(정규표현식, s): 정규표현식에 해당하는 부분을 s로 변경
 - String.matches(정규표현식): 문자열이 정규표현식에 일치하면 true 반환
 - String.indexOf(s): 조회하려는 문자열이 처음 발견되는 위치 반환
+- String.chars():  String의 문자들을 stream을 만듬
 
 ### Character 메소드
 - Character.isDigit(): char 문자가 숫자인지 조회
@@ -16,6 +17,9 @@
 ### Integer 메소드
 - Integer.toBinaryString(i): 정수 i를 이진수 형식의 문자열로 반환
 - Integer.parseInt(s, n): n진수 형태의 s 문자열을 10진수 숫자로 변환
+
+### Collectors 메소드
+- Collectors.joining(str): 문자열 스트림을 str을 붙여서 join
 
 ### 정규표현식
 - [abc] : a, b, c 중 한 문자
