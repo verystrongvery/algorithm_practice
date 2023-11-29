@@ -14,3 +14,7 @@
 ### Not In Place Sort
 - 추가 메모리를 사용하여 정렬하는 알고리즘
 - 예시: 힙정렬
+
+### sort 메소드
+- Arrays.sort(arr): 배열 정렬
+- Stream.sorted(stream): 스트림 정렬
