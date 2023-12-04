@@ -31,6 +31,7 @@
 - Math
   - [x] Euclidean Algorithm
   - [x] Sieve Of Eratosthenes
+- [x] Prefix Sum
 - Sorting
   - [x] Bubble Sort
   - [x] Heap Sort
