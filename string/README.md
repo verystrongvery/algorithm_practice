@@ -8,7 +8,7 @@
 - String.replaceAll(정규표현식, s): 정규표현식에 해당하는 부분을 s로 변경
 - String.matches(정규표현식): 문자열이 정규표현식에 일치하면 true 반환
 - String.indexOf(s): 조회하려는 문자열이 처음 발견되는 위치 반환
-- String.chars():  String의 문자들을 stream을 만듬
+- String.chars():  String의 문자들을 IntStream으로 만듬
 - String.trim(): 문자열 양끝의 공백 제거
 
 ### Character 메소드
