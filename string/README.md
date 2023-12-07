@@ -9,10 +9,12 @@
 - String.matches(정규표현식): 문자열이 정규표현식에 일치하면 true 반환
 - String.indexOf(s): 조회하려는 문자열이 처음 발견되는 위치 반환
 - String.chars():  String의 문자들을 stream을 만듬
+- String.trim(): 문자열 양끝의 공백 제거
 
 ### Character 메소드
 - Character.isDigit(): char 문자가 숫자인지 조회
 - Character.getNumericValue(): char 문자를 숫자로 변환
+- Character.toLowerCase(): 소문자로 변경
 
 ### Integer 메소드
 - Integer.toBinaryString(i): 정수 i를 이진수 형식의 문자열로 반환
