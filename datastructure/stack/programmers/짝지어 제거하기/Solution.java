@@ -1,21 +1,19 @@
-import java.util.*;
+import java.util.Stack;
 
-class Solution
-{
-    Stack<Character> st = new Stack<>();
-    public int solution(String s)
-    {
-        for(int i = 0; i < s.length(); i++) {
-            removePairStr(s.charAt(i));
+class Solution{
+    public int solution(String s){
+        Stack<Character> stack = new Stack<>();
+        for (char c : s.toCharArray()) {
+            removePairStr(stack, c);
         }
-        return st.isEmpty() ? 1 : 0;
+        return stack.isEmpty() ? 1 : 0;
     }
 
-    private void removePairStr(char c) {
-        if (!st.isEmpty() && st.peek() == c) {
-            st.pop();
+    private void removePairStr(Stack<Character> stack, char c) {
+        if (stack.isEmpty() || stack.peek() != c) {
+            stack.push(c);
             return ;
         }
-        st.push(c);
+        stack.pop();
     }
 }
