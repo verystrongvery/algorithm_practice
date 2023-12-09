@@ -1,11 +1,16 @@
+import java.util.List;
+import java.util.ArrayList;
+
 class Solution {
     public int[] solution(int n, long left, long right) {
-        int[] answer = new int[(int)(right - left + 1)];
+        List<Long> list = new ArrayList<>();
         for(long i = left; i <= right; i++) {
-            long quotient = i / n ;
-            long remainder = i % n;
-            answer[(int)(i - left)] = Math.max((int)quotient, (int)remainder) + 1;
+            long n1 = i / n + 1;
+            long n2 = (i + 1) % n == 0 ? n : (i + 1) % n;
+            list.add(Math.max(n1, n2));
         }
-        return answer;
+        return list.stream()
+                .mapToInt(i -> (int)i.longValue())
+                .toArray();
     }
 }
