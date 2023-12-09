@@ -1,27 +1,34 @@
-import java.util.Arrays;
-import java.util.stream.Collectors;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.Arrays;
 import java.util.ArrayList;
 
 class Solution {
     public int[] solution(String s) {
-        List<List<String>> tuples = Arrays.stream(s.split("},"))
-                .map(e -> e.replaceAll("[{}]", ""))
-                .map(e -> Arrays.asList(e.split(",")))
+        List<String> list = Arrays.stream(s.split("},"))
+                .map(str -> str.replaceAll("[{}]",""))
                 .collect(Collectors.toList());
-        List<String>[] bucket = new List[tuples.size() + 1];
-        tuples.forEach(tuple ->  bucket[tuple.size()] =  tuple);
+        List<Integer>[] answerArray = new ArrayList[list.size() + 1];
+        list.stream()
+                .map(this:: toList)
+                .forEach(l -> answerArray[l.size()] = l);
         List<Integer> answer = new ArrayList<>();
-        for(int i = 1; i <= tuples.size(); i++) {
-            for(String element : bucket[i]) {
-                if (!answer.contains(Integer.parseInt(element))) {
-                    answer.add(Integer.parseInt(element));
-                    break ;
+        for(int i = 1; i < answerArray.length; i++) {
+            for(int j = 0; j < answerArray[i].size(); j++) {
+                if (!answer.contains(answerArray[i].get(j))) {
+                    answer.add(answerArray[i].get(j));
+                    break;
                 }
             }
         }
         return answer.stream()
                 .mapToInt(Integer::intValue)
                 .toArray();
+    }
+
+    private List<Integer> toList(String str) {
+        return Arrays.stream(str.split(","))
+                .map(Integer::parseInt)
+                .collect(Collectors.toList());
     }
 }
