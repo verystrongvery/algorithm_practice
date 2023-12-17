@@ -1,62 +1,51 @@
 import java.util.Map;
-import java.util.HashMap;
 import java.util.TreeMap;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.stream.Collectors;
 
 class Solution {
-    Map<String, Integer> parkingTime = new HashMap<>();
-    Map<String, Integer> totalParkingTime = new TreeMap<>();
+    Map<Integer, Integer> entryTime = new ConcurrentHashMap<>();
+    Map<Integer, Integer> totalTime = new TreeMap<>();
 
     public int[] solution(int[] fees, String[] records) {
         for(String record : records) {
-            initParkingTime(fees, record);
+            analyzeRecord(record);
         }
-        parkingTime.entrySet()
+        entryTime.entrySet()
                 .stream()
-                .filter(es -> es.getValue() != -1)
-                .forEach(es -> parkingOut("23:59", es.getKey()));
-        return totalParkingTime.entrySet()
+                .forEach(es -> analyzeRecord("23:59 " + es.getKey()));
+        return totalTime.entrySet()
                 .stream()
-                .mapToInt(es -> computeParkingFee(es.getKey(), es.getValue(), fees))
+                .mapToInt(es -> computeFee(fees, es.getValue()))
                 .toArray();
     }
 
-    private void initParkingTime(int[] fees, String record) {
-        String[] parsedRecord = record.split(" ");
-        String time = parsedRecord[0];
-        String carNum = parsedRecord[1];
-        String history = parsedRecord[2];
-        if (history.equals("IN")) {
-            parkingIn(time, carNum);
+    private void analyzeRecord(String record) {
+        String[] r = record.split(" ");
+        int carNum = Integer.parseInt(r[1]);
+        int et = entryTime.getOrDefault(carNum, -1);
+        if (et == -1) {
+            entryTime.put(carNum, toIntTime(r[0]));
             return ;
         }
-        parkingOut(time, carNum);
+        entryTime.remove(carNum);
+        int tt = totalTime.getOrDefault(carNum, 0);
+        totalTime.put(carNum, tt + toIntTime(r[0]) - et);
     }
 
-    private void parkingIn(String time, String carNum) {
-        int parkingTimeIn = parkingTimeToInt(time);
-        parkingTime.put(carNum, parkingTimeIn);
+    private int toIntTime(String strTime) {
+        String[] s = strTime.split(":");
+        return Integer.parseInt(s[0]) * 60 + Integer.parseInt(s[1]);
     }
 
-    private void parkingOut(String time, String carNum) {
-        int parkingTimeIn = parkingTime.get(carNum);
-        int parkingTimeOut = parkingTimeToInt(time);
-        int parkingTimeResult = totalParkingTime.getOrDefault(carNum, 0);
-        totalParkingTime.put(carNum, parkingTimeResult + parkingTimeOut - parkingTimeIn);
-        parkingTime.put(carNum, -1);
-    }
-
-    private int parkingTimeToInt(String time) {
-        String[] parsedTime = time.split(":");
-        int hours = Integer.parseInt(parsedTime[0]);
-        int minute = Integer.parseInt(parsedTime[1]);
-        return hours * 60 + minute;
-    }
-
-    private int computeParkingFee(String carNum, int parkingTime, int[] fees) {
-        parkingTime -= fees[0];
-        if (parkingTime <= 0) {
+    private int computeFee(int[] fees, int time) {
+        if (fees[0] >= time){
             return fees[1];
         }
-        return fees[1] + (int)(Math.ceil((double)parkingTime / fees[2])) * fees[3];
+        time -= fees[0];
+        if (time % fees[2] == 0) {
+            return time / fees[2] * fees[3] + fees[1];
+        }
+        return (time / fees[2] + 1) * fees[3] + fees[1];
     }
 }
