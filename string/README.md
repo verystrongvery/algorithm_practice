@@ -26,3 +26,6 @@
 ### 정규표현식
 - [abc] : a, b, c 중 한 문자
 - ^[a-zA-Z]*$: 문자열이 전부 알파벳으로 이루어져 있음
+
+### Stream 메소드
+- toArray(String[]::new): 스트림을 String 배열로 변환
