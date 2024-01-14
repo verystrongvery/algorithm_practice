@@ -1,24 +1,29 @@
+// 1. 4구역이 모두 같으면 분할 x
+// 1.1 1 또는 0 개수 세기
+
+// 2. 4구역이 모두 같지 않으면 분할
 class Solution {
-    int[] answer = new int[2];
+
     public int[] solution(int[][] arr) {
-        quadCompression(0, 0, arr.length, arr);
+        int[] answer = new int[2];
+        compression(0, 0, arr.length, arr, answer);
         return answer;
     }
 
-    private void quadCompression(int x, int y, int size, int[][] arr) {
-        int standard = arr[y][x];
-        for(int i = y; i < y + size; i++) {
-            for(int j = x; j < x + size; j++) {
-                if (standard == arr[i][j]) {
+    private void compression(int x, int y, int len, int[][] arr, int[] answer) {
+        int benchmark = arr[y][x];
+        for(int i = y; i < y + len; i++) {
+            for(int j = x; j < x + len; j++) {
+                if(arr[i][j] == benchmark) {
                     continue;
                 }
-                quadCompression(x, y, size / 2, arr);
-                quadCompression(x + size / 2, y , size / 2, arr);
-                quadCompression(x, y + size / 2, size / 2, arr);
-                quadCompression(x + size / 2, y + size / 2, size / 2, arr);
+                compression(x, y, len / 2, arr, answer);
+                compression(x + len / 2, y, len / 2, arr, answer);
+                compression(x, y + len / 2, len / 2, arr, answer);
+                compression(x + len / 2, y + len / 2, len / 2, arr, answer);
                 return ;
             }
         }
-        answer[standard]++;
+        answer[benchmark]++;
     }
 }
