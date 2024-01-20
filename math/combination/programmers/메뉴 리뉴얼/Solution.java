@@ -1,6 +1,10 @@
-// 1. orders를 오름차순 정렬하기
+// 1. orders 알파벳 순서에 맞게 정렬하기
 
-// 2. orders의 조합을 이용하여 course에 해당하는 총 주문수와 총 주문수에 해당하는 문자열 구하기
+// 2. course를 반복문으로 돌리기
+
+// 3. course에 대한 orders의 조합 결과를 카운팅한 해시 맵 만들기
+
+// 4. 해시 맵의 가장 큰 값은 가진 조합 결과를 result 배열에 추가하기
 
 import java.util.List;
 import java.util.ArrayList;
@@ -10,62 +14,57 @@ import java.util.Arrays;
 import java.util.stream.Collectors;
 
 class Solution {
-    List<String> answer = new ArrayList<>();
-    Map<String, Integer> menuToCount = new HashMap<>();
-    String[] bucket;
-    int menuCountMax;
-    boolean[] isVisited;
-
+    List<String> result = new ArrayList<>();
+    Map<String, Integer> menuToMenuCount;
+    boolean[] isVisit;
     public String[] solution(String[] orders, int[] course) {
         orders = Arrays.stream(orders)
                 .map(this::sort)
                 .toArray(String[]::new);
         for(int c : course) {
-            solve(orders, c);
+            findResult(orders, c);
         }
-        return answer.stream()
+        return result.stream()
                 .sorted()
                 .toArray(String[]::new);
     }
+
     private String sort(String str) {
         return Arrays.stream(str.split(""))
                 .sorted()
                 .collect(Collectors.joining());
     }
-    private void solve(String[] orders, int course) {
-        menuToCount = new HashMap<>();
-        menuCountMax = 0;
+
+    private void findResult(String[] orders, int course) {
+        menuToMenuCount = new HashMap<>();
         for(String o : orders) {
-            bucket = new String[course];
-            isVisited = new boolean[o.length()];
-            combination(o.split(""), course, 0);
+            isVisit = new boolean[o.length()];
+            combination(o, course, "");
         }
-        if (menuCountMax < 2) {
-            return ;
-        }
-        menuToCount.entrySet()
+        int maxMenuCount = menuToMenuCount.values()
                 .stream()
-                .filter(es -> es.getValue() == menuCountMax)
-                .forEach(es -> answer.add(es.getKey()));
+                .mapToInt(v -> v)
+                .max()
+                .orElse(0);
+        menuToMenuCount.entrySet()
+                .stream()
+                .filter(es -> es.getValue() == maxMenuCount && es.getValue() >= 2)
+                .forEach(es -> result.add(es.getKey()));
     }
 
-    private void combination(String[] order, int course, int depth) {
-        if (depth == course) {
-            String menu = Arrays.stream(bucket)
-                    .collect(Collectors.joining());
-            int menuCount = menuToCount.getOrDefault(menu, 0);
-            menuToCount.put(menu, menuCount + 1);
-            menuCountMax = Math.max(menuCountMax, menuCount + 1);
+    private void combination(String order, int course, String element) {
+        if (element.length() == course) {
+            int menuToCount = menuToMenuCount.getOrDefault(element, 0);
+            menuToMenuCount.put(element, menuToCount + 1);
             return ;
         }
-        for(int i = 0; i < order.length; i++) {
-            if(isVisited[i] || (depth != 0 && (int)bucket[depth - 1].charAt(0) >= (int)order[i].charAt(0))) {
+        for(int i = 0; i < order.length(); i++) {
+            if (isVisit[i] || (element.length() > 0 && (int)order.charAt(i) <= (int)element.charAt(element.length() - 1))) {
                 continue;
             }
-            isVisited[i] = true;
-            bucket[depth] = order[i];
-            combination(order, course, depth + 1);
-            isVisited[i] = false;
+            isVisit[i] = true;
+            combination(order, course, element + order.charAt(i));
+            isVisit[i] = false;
         }
     }
 }
